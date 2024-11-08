@@ -1,23 +1,9 @@
 package com.socialmore.dishdelivery.security;
-import java.util.Date;
-import java.util.HashMap;
-
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-
-import java.util.Map;
-import java.util.function.Function;
-import java.util.HashMap;
-
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import com.socialmore.dishdelivery.config.AppConstants;
-
-@Component
+//@Component
 public class JwtTokenHelper {
-    
+  /*  
     private final String secret = "jwtTokenKey";
 
     public String getUsernameFromToken(String token)  {
@@ -61,4 +47,6 @@ public class JwtTokenHelper {
         final String username = getUsernameFromToken(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
+
+    */ 
 }

@@ -1,26 +1,15 @@
 package com.socialmore.dishdelivery.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import com.socialmore.dishdelivery.security.JwtAuthenticationEntryPoint;
-import com.socialmore.dishdelivery.security.JwtAuthenticationFilter;
 
 import lombok.AllArgsConstructor;
 
-@Configuration
-@EnableWebSecurity
-@EnableWebMvc
-@AllArgsConstructor
+//@Configuration
+//@EnableWebSecurity
+//@EnableWebMvc
+//@AllArgsConstructor
 public class SecurityConfiguration {
-
+/* 
     
      private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -46,5 +35,7 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
+    */
     
 }

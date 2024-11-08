@@ -2,6 +2,8 @@ package com.socialmore.dishdelivery.entity;
 
 import org.springframework.stereotype.Service;
 
+import com.socialmore.dishdelivery.enuk.CategoryName;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +14,6 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,6 @@ import lombok.ToString;
 @Data
 @ToString
 @EqualsAndHashCode
-
 @Service
 public class Item {
     

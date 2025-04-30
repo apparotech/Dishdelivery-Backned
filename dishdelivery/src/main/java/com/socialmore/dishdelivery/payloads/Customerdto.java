@@ -21,7 +21,8 @@ import lombok.Setter;
 public class Customerdto {
 
    private Integer  customerId;
-
+    private String username;
+    private String password;
    @NotNull(message = "firstName field should not be null")
    @Size(min = 3, max = 30, message = "First name should be between 3 and 30 characters")
    private String firstname;
@@ -36,9 +37,7 @@ public class Customerdto {
     private Integer age;
 
 
-    @NotNull(message = "gender field should not be null")
-    private String gender;
-
+  
     @NotNull(message = "mobileNumber field should not be null")
     private String mobileNumber;
 
@@ -49,8 +48,6 @@ public class Customerdto {
     @NotNull(message = "Address field should not be null")
     private AddressDTO address;
 
-    @NotNull(message = "password field should not be null")
-    @Size(min = 8, max = 15, message = "Password should be between 8 and 15 characters")
-    private String password;
+   
     
 }

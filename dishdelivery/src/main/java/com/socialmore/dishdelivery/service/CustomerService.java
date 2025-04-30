@@ -1,10 +1,11 @@
 package com.socialmore.dishdelivery.service;
 
-import com.socialmore.dishdelivery.entity.Customer;
 import com.socialmore.dishdelivery.payloads.Customerdto;
 
 public interface  CustomerService {
 
-    public Customer addCustomer(Customerdto customerdto);
+    public Customerdto addCustomer(Customerdto customerdto);
+
+    public Customerdto editCustomerDetails(Integer customerId, Customerdto updatedCustomerDto) ;
     
 }

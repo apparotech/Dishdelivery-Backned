@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,14 +15,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.socialmore.dishdelivery.entity.Admin;
 import com.socialmore.dishdelivery.entity.Category;
 import com.socialmore.dishdelivery.entity.Item;
+import com.socialmore.dishdelivery.entity.User;
 import com.socialmore.dishdelivery.exception.ItemNotFoundException;
+import com.socialmore.dishdelivery.payloads.ApiResponse;
 import com.socialmore.dishdelivery.payloads.itemdto;
 import com.socialmore.dishdelivery.service.ItemService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/admin/items")
+@AllArgsConstructor
 public class ItemController {
     
     @Autowired
@@ -29,16 +36,14 @@ public class ItemController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<Item> addItem(@RequestBody itemdto itemdto) {
-         try {
-            Item  savedItem = itemService.addItem(itemdto);
-             return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
-         } catch (ItemNotFoundException e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ApiResponse> addItem(@RequestBody itemdto itemdto, @AuthenticationPrincipal User user) {
+        // this.itemService.addItem(itemdto, admin);
+       // if(user == null !user.getRoles().contains())
 
-         }}
+      
+         return ResponseEntity.ok(new ApiResponse("Post created successfully", true));
 
-
+    }
 
          @PutMapping("update/{itemId}")
 

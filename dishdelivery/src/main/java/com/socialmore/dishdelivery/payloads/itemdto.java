@@ -1,7 +1,7 @@
 package com.socialmore.dishdelivery.payloads;
 
 import com.socialmore.dishdelivery.enuk.CategoryName;
-
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -30,5 +30,10 @@ public class itemdto {
 
     @DecimalMin("1.00")
     private Double cost;
+    @NotBlank(message = "Image URL cannot be blank")
+    private String imageUrl;
+
+    private String caption;
+
     
 }

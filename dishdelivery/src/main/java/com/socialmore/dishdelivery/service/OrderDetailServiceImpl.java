@@ -1,14 +1,11 @@
 package com.socialmore.dishdelivery.service;
 
 import java.util.Optional;
-import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.socialmore.dishdelivery.entity.Customer;
-import com.socialmore.dishdelivery.entity.FoodCart;
 import com.socialmore.dishdelivery.entity.OrderDetails;
-import com.socialmore.dishdelivery.exception.FoodCartException;
 import com.socialmore.dishdelivery.exception.OrderException;
 import com.socialmore.dishdelivery.repository.FoodCartRepo;
 import com.socialmore.dishdelivery.repository.OrderDetailRepo;
@@ -48,6 +45,8 @@ public class OrderDetailServiceImpl  implements  OrderDetailService{
         }
     }
 
+
+    
 
     @Override
 	public OrderDetails updateOrder(OrderDetails order) throws OrderException {
@@ -101,25 +100,8 @@ public class OrderDetailServiceImpl  implements  OrderDetailService{
 //		return null;
 //	}
 
-	@Override
-	public List<OrderDetails> viewAllOrders(Customer customer) throws OrderException,FoodCartException {
-		// TODO Auto-generated method stub
-		
-		FoodCart foodCart = foodCartRepo.findByCustomer(customer);
-		
-		if(foodCart==null) {
-			throw new FoodCartException("FoodCart not found....");
-		}
-		
-		List<OrderDetails> orderdetail =orderDetailRepo.findByCart(foodCart);
-		
-		if(orderdetail.size()==0) {
-			throw new OrderException("Order Detail Not found....");
-		}
-		
-		
-		
-		return orderdetail;
-	}
+
+
+	
     
 }

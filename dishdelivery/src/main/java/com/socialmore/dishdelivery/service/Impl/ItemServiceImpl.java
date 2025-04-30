@@ -7,8 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.socialmore.dishdelivery.entity.Admin;
 import com.socialmore.dishdelivery.entity.Category;
 import com.socialmore.dishdelivery.entity.Item;
+import com.socialmore.dishdelivery.entity.User;
 import com.socialmore.dishdelivery.exception.ItemNotFoundException;
 import com.socialmore.dishdelivery.payloads.itemdto;
 import com.socialmore.dishdelivery.repository.ItemRepository;
@@ -23,17 +25,21 @@ public class ItemServiceImpl implements  ItemService {
     private ItemRepository itemRepository;
 
     @Override
-    public Item addItem(itemdto itemdto) throws ItemNotFoundException {
+    public Item addItem(itemdto itemdto , Admin admin) throws ItemNotFoundException {
         if(itemdto == null) throw new ItemNotFoundException("Please add valid Item Details...");
 
          Item item = new Item();
          item.setItemName(itemdto.getItemName());
          item.setQuantity(itemdto.getQuantity());
          item.setCost(itemdto.getCost());
+         item.setImageUrl(itemdto.getImageUrl());
+         item.setCaption(itemdto.getCaption());
+
 
          Category category = new Category();
          category.setCategoryName(itemdto.getCategoryName());
          item.setCategory(category);
+         item.setAdmin(admin);
 
          Item savedItem = itemRepository.save(item);
          return  savedItem;

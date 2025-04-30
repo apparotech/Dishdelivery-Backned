@@ -1,9 +1,21 @@
 package com.socialmore.dishdelivery.security;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-//@Component
+import com.socialmore.dishdelivery.config.AppConstants;
+import com.socialmore.dishdelivery.enuk.Role;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+@Component
 public class JwtTokenHelper {
-  /*  
+    
     private final String secret = "jwtTokenKey";
 
     public String getUsernameFromToken(String token)  {
@@ -28,8 +40,9 @@ public class JwtTokenHelper {
         return expiration.before(new Date());
     }
 
-     public String generateToken(UserDetails userDetails) {
+     public String generateToken(UserDetails userDetails, Role role) {
         Map<String, Object> claims = new HashMap<>();
+         claims.put("role", role.name());
         return doGenerateToken(claims, userDetails.getUsername());
     }
 
@@ -48,5 +61,12 @@ public class JwtTokenHelper {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    */ 
+
+    // Retrieve role from token
+    public Role getRoleFromToken(String token) {
+        String role = getClaimFromToken(token, claims -> claims.get("role", String.class));
+        return Role.valueOf(role);
+    }
+
+    
 }

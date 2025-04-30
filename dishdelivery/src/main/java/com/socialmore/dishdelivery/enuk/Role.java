@@ -4,5 +4,5 @@ public enum  Role {
     
     CUSTOMER,
     DELIVERY_PERSON,
-    ADMIN
+    ADMIN;
 }

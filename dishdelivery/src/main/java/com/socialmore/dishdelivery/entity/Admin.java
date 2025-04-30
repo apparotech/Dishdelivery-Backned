@@ -1,33 +1,32 @@
 package com.socialmore.dishdelivery.entity;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDetails {
-    
+public class Admin {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer orderId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-    private LocalDate orderDate = LocalDate.now();
+    private String username;
 
-   @OneToOne(cascade= CascadeType.ALL)
-    private FoodCart cart;
+    private String password;
 
-    private String  orderStatus;
+    @OneToOne
+    // @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+
 }
